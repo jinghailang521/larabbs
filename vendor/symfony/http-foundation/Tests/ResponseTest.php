@@ -152,7 +152,7 @@ class ResponseTest extends ResponseTestCase
 
     public function testIsNotModifiedNotSafe()
     {
-        $request = Request::create('/homepage', 'POST');
+        $request = Request::create('/page', 'POST');
 
         $response = new Response();
         $this->assertFalse($response->isNotModified($request));

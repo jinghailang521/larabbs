@@ -174,19 +174,19 @@ class BuilderTest extends TestCase
                     'Money.php'    => [],
                     'MoneyBag.php' => []
                 ],
-                '/home/sb/Money',
+                '//sb/Money',
                 [
-                    '/home/sb/Money/Money.php'    => [],
-                    '/home/sb/Money/MoneyBag.php' => []
+                    '//sb/Money/Money.php'    => [],
+                    '//sb/Money/MoneyBag.php' => []
                 ]
             ],
             [
                 [
                     'Money.php' => []
                 ],
-                '/home/sb/Money/',
+                '//sb/Money/',
                 [
-                    '/home/sb/Money/Money.php' => []
+                    '//sb/Money/Money.php' => []
                 ]
             ],
             [
@@ -200,11 +200,11 @@ class BuilderTest extends TestCase
                     'MoneyBag.php'       => [],
                     'Cash.phar/Cash.php' => [],
                 ],
-                '/home/sb/Money',
+                '//sb/Money',
                 [
-                    '/home/sb/Money/Money.php'                 => [],
-                    '/home/sb/Money/MoneyBag.php'              => [],
-                    'phar:///home/sb/Money/Cash.phar/Cash.php' => [],
+                    '//sb/Money/Money.php'                 => [],
+                    '//sb/Money/MoneyBag.php'              => [],
+                    'phar:////sb/Money/Cash.phar/Cash.php' => [],
                 ],
             ],
         ];

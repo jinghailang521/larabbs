@@ -52,7 +52,7 @@ class AuthMakeCommand extends Command
 
         if (! $this->option('views')) {
             file_put_contents(
-                app_path('Http/Controllers/HomeController.php'),
+                app_path('Http/Controllers/Controller.php'),
                 $this->compileControllerStub()
             );
 
@@ -113,7 +113,7 @@ class AuthMakeCommand extends Command
         return str_replace(
             '{{namespace}}',
             $this->getAppNamespace(),
-            file_get_contents(__DIR__.'/stubs/make/controllers/HomeController.stub')
+            file_get_contents(__DIR__.'/stubs/make/controllers/Controller.stub')
         );
     }
 }

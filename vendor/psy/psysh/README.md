@@ -1,6 +1,6 @@
 # PsySH
 
-PsySH is a runtime developer console, interactive debugger and [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for PHP. Learn more at [psysh.org](http://psysh.org/) and [in the manual](https://github.com/bobthecow/psysh/wiki/Home).
+PsySH is a runtime developer console, interactive debugger and [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for PHP. Learn more at [psysh.org](http://psysh.org/) and [in the manual](https://github.com/bobthecow/psysh/wiki/).
 
 
 [![Package version](https://img.shields.io/packagist/v/psy/psysh.svg?style=flat-square)](https://packagist.org/packages/psy/psysh)
@@ -13,7 +13,7 @@ PsySH is a runtime developer console, interactive debugger and [REPL](https://en
 
 <a id="downloading-the-manual"></a>
 
-## [PsySH manual](https://github.com/bobthecow/psysh/wiki/Home)
+## [PsySH manual](https://github.com/bobthecow/psysh/wiki/)
 
 ### [💾 Installation](https://github.com/bobthecow/psysh/wiki/Installation)
  * [📕 PHP manual installation](https://github.com/bobthecow/psysh/wiki/PHP-manual)
