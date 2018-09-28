@@ -29,7 +29,7 @@
                     <li><a href="{{ route('login')  }}">登录</a></li>
                     <li><a href="{{ route('register')  }}">注册</a></li>
                 @else
-                    <li class=""dropdown>
+                    <li class="dropdown">
                         <a href="">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
@@ -38,13 +38,21 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                         </a>
-                        <ul class="dropdown" rote="menu">
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li>
+                                <a href="{{ route('users.edit', Auth::id()) }}">
+                                    编辑资料
+                                </a>
+                            </li>
+
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                     退出登录
                                 </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>

@@ -208,6 +208,19 @@ class BinaryFileResponseTest extends ResponseTestCase
         );
     }
 
+    public function testUnpreparedResponseSendsFullFile()
+    {
+        $response = BinaryFileResponse::create(__DIR__.'/File/Fixtures/test.gif', 200);
+
+        $data = file_get_contents(__DIR__.'/File/Fixtures/test.gif');
+
+        $this->expectOutputString($data);
+        $response = clone $response;
+        $response->sendContent();
+
+        $this->assertEquals(200, $response->getStatusCode());
+    }
+
     /**
      * @dataProvider provideInvalidRanges
      */
@@ -324,7 +337,7 @@ class BinaryFileResponseTest extends ResponseTestCase
     {
         return array(
             array('/var/www/var/www/files/foo.txt', '/var/www/=/files/', '/files/var/www/files/foo.txt'),
-            array('//foo/bar.txt', '/var/www/=/files/,//foo/=/baz/', '/baz/bar.txt'),
+            array('/home/foo/bar.txt', '/var/www/=/files/,/home/foo/=/baz/', '/baz/bar.txt'),
         );
     }
 
