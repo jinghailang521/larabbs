@@ -8,6 +8,12 @@ use App\Handlers\ImageUploadHandler;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth',['excpt'=>['show']]);
+    }
+
     //展示
     public function show(User $user)
     {
@@ -19,6 +25,7 @@ class UserController extends Controller
     }
     public function update(UserRequest $request,ImageUploadHandler $uploader, User $user)
     {
+        $this->authorize('update', $user);
         $data = $request->all();
         if( $request->avatar ){
             $result = $uploader->save($request->avatar,'avatar',$user->id,362);
