@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Handlers\\ImageUploadHandler' => $baseDir . '/app/Handlers/ImageUploadHandler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -3215,6 +3216,7 @@ return array(
     'Symfony\\Component\\HttpKernel\\HttpCache\\Ssi' => $vendorDir . '/symfony/http-kernel/HttpCache/Ssi.php',
     'Symfony\\Component\\HttpKernel\\HttpCache\\Store' => $vendorDir . '/symfony/http-kernel/HttpCache/Store.php',
     'Symfony\\Component\\HttpKernel\\HttpCache\\StoreInterface' => $vendorDir . '/symfony/http-kernel/HttpCache/StoreInterface.php',
+    'Symfony\\Component\\HttpKernel\\HttpCache\\SubRequestHandler' => $vendorDir . '/symfony/http-kernel/HttpCache/SubRequestHandler.php',
     'Symfony\\Component\\HttpKernel\\HttpCache\\SurrogateInterface' => $vendorDir . '/symfony/http-kernel/HttpCache/SurrogateInterface.php',
     'Symfony\\Component\\HttpKernel\\HttpKernel' => $vendorDir . '/symfony/http-kernel/HttpKernel.php',
     'Symfony\\Component\\HttpKernel\\HttpKernelInterface' => $vendorDir . '/symfony/http-kernel/HttpKernelInterface.php',
@@ -3412,6 +3414,7 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php70\\Php70' => $vendorDir . '/symfony/polyfill-php70/Php70.php',
     'Symfony\\Thanks\\Command\\ThanksCommand' => $vendorDir . '/symfony/thanks/src/Command/ThanksCommand.php',
+    'Symfony\\Thanks\\GitHubClient' => $vendorDir . '/symfony/thanks/src/GitHubClient.php',
     'Symfony\\Thanks\\Thanks' => $vendorDir . '/symfony/thanks/src/Thanks.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
     'Tests\\Feature\\ExampleTest' => $baseDir . '/tests/Feature/ExampleTest.php',
