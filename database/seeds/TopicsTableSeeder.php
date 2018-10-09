@@ -14,11 +14,11 @@ class TopicsTableSeeder extends Seeder
 
         // 所有分类 ID 数组，如：[1,2,3,4]
         $category_ids = Category::all()->pluck('id')->toArray();
-        echo 111;
-        echo 222;
+
 
         // 获取 Faker 实例
         $faker = app(Faker\Generator::class);
+
 
         $topics = factory(Topic::class)
             ->times(100)
