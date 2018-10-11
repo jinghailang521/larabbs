@@ -19,6 +19,17 @@ body {
   border-top: 4px solid #00b5ad;
   margin-bottom: 40px;
   margin-top: 0px;
+  .dropdown-menu{
+    padding: 0px;
+    li a{
+      border-bottom: 1px solid;
+      line-height: 2.4;
+      .glyphicon{
+        margin-right:8px;
+      }
+
+    }
+  }
 }
 /* Sticky footer styles */
 
@@ -93,14 +104,6 @@ body {
 
   .pagination {
     margin: 12px 0;
-  }
-
-  .meta {
-    font-size: .9em;
-    color: #b3b3b3;
-  }
-  .rpely-content {
-    margin: 6px 0;
   }
 }
 
