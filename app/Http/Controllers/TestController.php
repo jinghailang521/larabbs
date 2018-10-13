@@ -25,7 +25,7 @@ class TestController extends Controller
         $config = config( 'system.api.pl' );
         $header = [ 'api-key:' . $config[ 'key' ], 'api-token:' . $config[ 'token' ] ];
         $data = array();
-        $productTable = DB::table( 'products' )->select( 'id', 'title', 'old_price', 'market_price', 'product_pricute_source', 'product_url', 'desc' )->where( 'id', '>', '8868' )->limit(1)->get();
+        $productTable = DB::table( 'products' )->select( 'id', 'title', 'old_price', 'market_price', 'product_pricute_source', 'product_url', 'desc' )->whereBetween( 'id', [8772,8847] )->get();
         if( isset( $productTable ) && count( $productTable ) > 0 )
         {
             $arrPids = array();
@@ -64,7 +64,7 @@ class TestController extends Controller
                     $info[ 'sources' ][] = $source;
                     unset( $source );
                 }
-                $info['sites'] = 44;
+                $info['sites'] = 45;
                 // $info['from']  = 'shopfiy';
                 $data[$product->id] = $info;
                 $arrPids[] = $product->id;
@@ -81,7 +81,7 @@ class TestController extends Controller
                 {
                     foreach ( $productToCateTable as $relCate )
                     {
-                        $categoryTable = DB::table( 'ncategories' )->select( 'id', 'title' )->find( $relCate->category_id );
+                        $categoryTable = DB::table( 'categories' )->select( 'id', 'title' )->find( $relCate->category_id );
                         if( isset( $categoryTable ) && count( $categoryTable ) > 0 )
                         {
                             if( isset( $categoryTable->title ) && strlen( $categoryTable->title ) > 0 )
@@ -99,6 +99,7 @@ class TestController extends Controller
                         }
                     }
                 }
+                
                 foreach ( $arrPids as $productId )
                 {
                     //-----------------------------------------------
