@@ -47,6 +47,7 @@ class Publish extends Command
         $force = $this->option('force') ? 'f' : 'n';
 
         $sourcePath = base_path('vendor/caouecs/laravel-lang/src');
+        $sourceJsonPath = base_path('vendor/caouecs/laravel-lang/json');
         $targetPath = base_path('resources/lang/');
 
         if (!is_dir($targetPath) && !mkdir($targetPath)) {
@@ -58,18 +59,22 @@ class Publish extends Command
         $copyEnFiles = false;
         $inLumen = $this->laravel instanceof \Laravel\Lumen\Application;
 
-        if ($locale == 'all') {
-            $files = [$sourcePath.'/*'];
+        if ('all' == $locale) {
+            $files = [
+                $sourcePath.'/*',
+                $sourceJsonPath,
+            ];
             $message = 'all';
             $copyEnFiles = true;
         } else {
             foreach (explode(',', $locale) as $filename) {
-                if ($locale === 'en') {
+                if ('en' === $locale) {
                     $copyEnFiles = true;
 
                     continue;
                 }
                 $file = $sourcePath.'/'.trim($filename);
+                $jsonFile = $sourceJsonPath.'/'.trim($filename).'.json';
 
                 if (!file_exists($file)) {
                     $this->error("lang '$filename' not found.");
@@ -79,6 +84,13 @@ class Publish extends Command
 
                 $published[] = $filename;
                 $files[] = $file;
+
+                if (!file_exists($jsonFile)) {
+                    $this->error("lang '$filename' not found.");
+
+                    continue;
+                }
+                $files[] = $jsonFile;
             }
 
             if (empty($files)) {
@@ -101,7 +113,7 @@ class Publish extends Command
             }
         });
 
-        $type = ($force == 'f') ? 'overwrite' : 'no overwrite';
+        $type = ('f' == $force) ? 'overwrite' : 'no overwrite';
 
         $this->info("published languages <comment>({$type})</comment>: {$message}.");
     }
