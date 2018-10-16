@@ -25,7 +25,7 @@ class TestController extends Controller
         $config = config( 'system.api.pl' );
         $header = [ 'api-key:' . $config[ 'key' ], 'api-token:' . $config[ 'token' ] ];
         $data = array();
-        $productTable = DB::table( 'products' )->select( 'id', 'title', 'old_price', 'market_price', 'product_pricute_source', 'product_url', 'desc' )->whereBetween( 'id', [8772,8847] )->get();
+        $productTable = DB::table( 'products' )->select( 'id', 'title', 'old_price', 'market_price', 'product_pricute_source', 'product_url', 'desc' )->get();
         if( isset( $productTable ) && count( $productTable ) > 0 )
         {
             $arrPids = array();
