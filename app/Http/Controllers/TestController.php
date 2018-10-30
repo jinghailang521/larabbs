@@ -25,7 +25,8 @@ class TestController extends Controller
         $config = config( 'system.api.pl' );
         $header = [ 'api-key:' . $config[ 'key' ], 'api-token:' . $config[ 'token' ] ];
         $data = array();
-        $productTable = DB::table( 'products' )->select( 'id', 'title', 'old_price', 'market_price', 'product_pricute_source', 'product_url', 'desc' )->get();
+        $productTable = DB::table( 'products' )->select( 'id', 'title', 'old_price', 'market_price', 'product_pricute_source', 'product_url', 'desc' )->where('id','>',8595)->get();
+
         if( isset( $productTable ) && count( $productTable ) > 0 )
         {
             $arrPids = array();
@@ -99,12 +100,11 @@ class TestController extends Controller
                         }
                     }
                 }
-                
                 foreach ( $arrPids as $productId )
                 {
                     //-----------------------------------------------
                     //sku
-                    $skuTable = DB::table( 'product_skus' )->select( 'id', 'option_values', 'product_id', 'sku_price', 'sku_thumb' )->where( 'product_id', $productId )->get();
+                    $skuTable = DB::table( 'product_skus' )->select( 'id', 'option_values', 'product_id', 'sku_price', 'sku_thumb' )->where( 'product_id', $productId )->orderBy('id','desc')->get();
                     if( isset( $skuTable ) && count( $skuTable ) > 0 )
                     {
                         foreach ( $skuTable as $sku )
@@ -148,19 +148,18 @@ class TestController extends Controller
                                     {
                                         continue;
                                     }
-                                    
-                                    $op[ 'name' ] = $option->name;
-                                    $op[ 'values' ] = array();
+                                    $oa[ 'name' ] = $option->name;
+                                    $oa[ 'values' ] = array();
                                     foreach ( $optionValTable as $value )
                                     {
                                         if( isset( $value->name ) && strlen( $value->name ) > 0 )
                                         {
-                                            $op[ 'values' ][] = $value->name;
+                                            $oa[ 'values' ][] = $value->name;
                                         }
                                     }
-                                    
-                                    $data[$option->product_id][ 'options' ][] = $op;
-                                    unset( $op );
+
+                                    $data[$option->product_id][ 'options' ][] = $oa;
+                                    unset( $oa );
                                 }
                             }
                         }
