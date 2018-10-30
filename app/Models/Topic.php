@@ -18,6 +18,7 @@ class Topic extends Model
 
     public function ScopeWithOrder($query,$order)
     {
+        //不同的排序使用不同的数据读取逻辑
         switch ($order) {
             case 'recent':
                 $query->recent();
@@ -27,6 +28,7 @@ class Topic extends Model
                 $query->recentReplied();
                 break;
         }
+        //预加载防止N+1
         return $query->with('user','category');
     }
     public function ScopeRecent($query)
