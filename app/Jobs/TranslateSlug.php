@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Models\Topic;
 use App\Handlers\SlugTranslateHandler;
+use Illuminate\Support\Facades\Log;
 
 class TranslateSlug implements ShouldQueue
 {
@@ -51,6 +52,12 @@ class TranslateSlug implements ShouldQueue
     {
         //请求接口
         $slug = app(SlugTranslateHandler::class)->translate($this->topic->title);
+        file_put_contents(
+            storage_path( 'logs/slug.log'  ),
+            '【' . date( 'Y-m-d H:i:s', $_SERVER[ 'REQUEST_TIME' ] ) . '】 翻译结果为：'.$slug . PHP_EOL,
+            FILE_APPEND
+        );
+        return false;
         \DB::table('topics')->where('id',$this->topic->id)->update(['slug',$slug]);
     }
 }
